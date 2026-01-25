@@ -1,61 +1,40 @@
 import { motion } from "framer-motion";
-import type { Variants, Easing } from "framer-motion";
-
-const easeOut: Easing = [0.4, 0, 0.2, 1];
+import { staggerContainer, fadeUpVariants } from "@/lib/animations";
 
 const RSVPSection = () => {
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: easeOut },
-    },
-  };
-
   return (
     <motion.section
-      variants={containerVariants}
+      variants={staggerContainer}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
       className="px-6 py-16 text-center"
     >
-      <motion.div variants={itemVariants} className="ornate-divider mx-auto max-w-xs mb-10" />
+      <motion.div variants={fadeUpVariants} className="ornate-divider mx-auto max-w-xs mb-10" />
 
-      <motion.h3 
-        variants={itemVariants}
+      <motion.h3
+        variants={fadeUpVariants}
         className="font-display text-2xl text-gradient-gold text-shadow-glow mb-4"
       >
         Join Our Celebration
       </motion.h3>
 
-      <motion.p 
-        variants={itemVariants}
+      <motion.p
+        variants={fadeUpVariants}
         className="font-elegant text-foreground/70 text-lg mb-8 max-w-xs mx-auto"
       >
         Your presence would make our special day even more memorable
       </motion.p>
 
-      <motion.div variants={itemVariants}>
-        <button 
+      <motion.div variants={fadeUpVariants}>
+        <button
           className="inline-flex items-center justify-center h-12 px-8 rounded-md font-display tracking-widest text-base bg-gradient-to-r from-gold-dark via-gold to-gold-light text-background border border-gold-light/30 hover:shadow-[0_0_30px_hsl(43_90%_55%/0.5)] hover:scale-105 active:scale-100 transition-all duration-300"
         >
           RSVP Now
         </button>
       </motion.div>
 
-      <motion.div variants={itemVariants} className="mt-16">
+      <motion.div variants={fadeUpVariants} className="mt-16">
         <p className="font-elegant text-gold/60 text-sm tracking-widest uppercase mb-4">
           With Love
         </p>
@@ -64,11 +43,11 @@ const RSVPSection = () => {
         </p>
       </motion.div>
 
-      <motion.div variants={itemVariants} className="ornate-divider mx-auto max-w-xs mt-10" />
+      <motion.div variants={fadeUpVariants} className="ornate-divider mx-auto max-w-xs mt-10" />
 
       {/* Footer spacing */}
-      <motion.p 
-        variants={itemVariants}
+      <motion.p
+        variants={fadeUpVariants}
         className="font-elegant text-muted-foreground/50 text-xs mt-16"
       >
         Made with love for our special day
