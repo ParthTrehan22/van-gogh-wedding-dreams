@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import frameImg from "@/assets/PictureFrame.png";
+import pinkTexture from "@/assets/PinkTexture2.jpeg";
 
 // Importing images manually - avoiding glob for better control/compatibility
 import img1 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.23 PM.jpeg";
@@ -32,7 +33,14 @@ const CoupleSection = () => {
     }, []);
 
     return (
-        <section className="relative w-full h-screen flex flex-col items-center justify-center bg-[#FCE6EB] overflow-hidden px-6 py-20">
+        <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden px-6 py-20">
+
+            {/* Background Texture */}
+            <img
+                src={pinkTexture}
+                alt="Background Texture"
+                className="absolute inset-0 w-full h-full object-cover z-0"
+            />
 
             {/* Titles */}
             <motion.div
@@ -63,7 +71,7 @@ const CoupleSection = () => {
                 {/* We use specific insets to ensure the photo fills the "hole" but doesn't spill too far if the frame is irregular. */}
                 {/* Assuming a standard frame rim of ~10-15%. We make the photo slightly larger (inset-10) to ensure no gaps, relying on the frame to cover edges. */}
                 <div className="absolute inset-[13%] z-10 overflow-hidden bg-black/20">
-                    <AnimatePresence mode="wait">
+                    <AnimatePresence>
                         <motion.img
                             key={index}
                             src={images[index]}
@@ -71,8 +79,8 @@ const CoupleSection = () => {
                             initial={{ opacity: 0, scale: 1.05 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 1.2 }}
-                            className="w-full h-full object-cover"
+                            transition={{ duration: 1.5 }}
+                            className="absolute inset-0 w-full h-full object-cover"
                         />
                     </AnimatePresence>
                 </div>
