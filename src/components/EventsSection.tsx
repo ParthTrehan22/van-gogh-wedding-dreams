@@ -113,27 +113,28 @@ const EventsSection = () => {
         })}
       </div>
 
-      <motion.div
-        variants={fadeUpVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="px-6 relative z-30"
-      >
-        <div className="flex flex-col gap-12 pt-10 relative z-30">
-          {events.map((event, index) => (
+      <div className="relative z-30 flex flex-col">
+        {events.map((event, index) => (
+          <div
+            key={event.name}
+            className="min-h-screen w-full flex items-center justify-center"
+          >
+            {/* Sticky container for stacking effect - user usually loves this for "pages" */}
+            {/* Actually, user just said "own full page". Sticky stacking is riskier without explicit request. 
+                 But standard block flow is safer. 
+                 Let's do standard block first.
+              */}
             <EventCard
-              key={event.name}
               title={event.name}
               date={event.date}
               time={event.time}
               description={event.description}
-              delay={index * 0.2}
+              delay={0.2} // fixed delay since they appear one by one
               theme={event.theme}
             />
-          ))}
-        </div>
-      </motion.div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

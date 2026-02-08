@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
 import flowerCorner from "@/assets/FlowerCorner.png";
+import haldiIcon from "@/assets/Haldi-icon.png";
+import sangeetIcon from "@/assets/Sangeet-icon.png";
+import varmalaIcon from "@/assets/varmala-icon.png";
+import receptionIcon from "@/assets/reception-icon.png";
 
 type EventTheme = 'yellow' | 'black' | 'pink' | 'blue';
 
@@ -39,52 +43,82 @@ const themeStyles: Record<EventTheme, { innerBg: string; titleColor: string; tex
     }
 };
 
+const getEventIcon = (title: string) => {
+    const lowerTitle = title.toLowerCase();
+    if (lowerTitle.includes('haldi')) return haldiIcon;
+    if (lowerTitle.includes('sangeet')) return sangeetIcon;
+    if (lowerTitle.includes('varmala')) return varmalaIcon;
+    if (lowerTitle.includes('reception')) return receptionIcon;
+    return null;
+};
+
 const EventCard = ({ title, date, time, description, delay = 0, theme = 'yellow' }: EventCardProps) => {
     const styles = themeStyles[theme];
+    const icon = getEventIcon(title);
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay, ease: "easeOut" }}
-            className="relative w-full max-w-[300px] mx-auto my-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 1, delay, ease: "easeOut" }}
+            className="relative w-full min-h-screen flex flex-col"
         >
-            {/* Main Colored Card */}
-            <div className={`relative ${styles.innerBg} rounded-[1.5rem] p-6 flex flex-col items-center justify-center text-center h-[340px] shadow-2xl border border-white/20 transition-colors duration-500`}>
+            {/* Main Colored Background - Full Screen */}
+            <div className={`relative ${styles.innerBg} w-full min-h-screen flex flex-col items-center justify-between py-24 sm:py-32 md:py-40 text-center transition-colors duration-500`}>
 
                 {/* Inner Decorative Frame */}
-                <div className={`absolute inset-3 border ${styles.buttonColor.split(' ')[1]} opacity-30 rounded-[1rem] pointer-events-none`} />
+                <div className={`absolute inset-4 sm:inset-12 md:inset-16 border-[3px] ${styles.buttonColor.split(' ')[1]} opacity-40 pointer-events-none rounded-[2rem]`} />
 
-                {/* Title */}
-                <h3 className={`font-display text-2xl sm:text-3xl ${styles.titleColor} mb-3 tracking-widest uppercase relative z-10`}>
-                    {title}
-                </h3>
+                {/* Event Icon Section - Takes available space */}
+                {icon && (
+                    <motion.div
+                        initial={{ scale: 0.8, opacity: 0, y: 20 }}
+                        whileInView={{ scale: 1, opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className="relative z-10 flex-1 flex items-center justify-center w-full"
+                    >
+                        <img
+                            src={icon}
+                            alt={`${title} icon`}
+                            className="w-72 sm:w-72 md:w-96 lg:w-[500px] h-auto object-contain drop-shadow-2xl"
+                        />
+                    </motion.div>
+                )}
 
-                {/* Description */}
-                <p className={`font-elegant text-xs sm:text-sm italic ${styles.textColor} mb-3 px-2 relative z-10`}>
-                    {description}
-                </p>
+                {/* Text Content Section - Takes available space and spreads out */}
+                <div className="flex-1 flex flex-col items-center justify-center w-full px-6 relative z-10 gap-2 sm:gap-4 md:gap-8">
 
-                {/* Divider */}
-                <div className={`w-12 h-[1px] ${styles.titleColor.replace('text-', 'bg-')} opacity-30 mb-4 relative z-10`} />
+                    {/* Title */}
+                    <h3 className={`font-display text-5xl sm:text-7xl md:text-9xl ${styles.titleColor} tracking-widest uppercase drop-shadow-sm`}>
+                        {title}
+                    </h3>
 
-                {/* Details */}
-                <div className={`font-elegant ${styles.textColor} space-y-1 relative z-10`}>
-                    <p className="uppercase tracking-widest text-xs font-semibold">{date}</p>
-                    <p className="text-base italic">{time}</p>
+                    {/* Description */}
+                    <p className={`font-elegant text-xl sm:text-2xl md:text-4xl italic ${styles.textColor} max-w-5xl leading-relaxed`}>
+                        {description}
+                    </p>
+
+                    {/* Divider */}
+                    <div className={`w-24 sm:w-48 h-[2px] ${styles.titleColor.replace('text-', 'bg-')} opacity-60 my-2 md:my-4`} />
+
+                    {/* Details */}
+                    <div className={`font-elegant ${styles.textColor} flex flex-col gap-1 md:gap-3`}>
+                        <p className="uppercase tracking-[0.25em] text-lg sm:text-xl md:text-2xl font-bold opacity-90">{date}</p>
+                        <p className="text-2xl sm:text-4xl md:text-5xl italic font-medium">{time}</p>
+                    </div>
                 </div>
 
-                {/* Flower Decorations - Absolute on Card */}
+                {/* Flower Decorations - Nicer positioning */}
                 <img
                     src={flowerCorner}
                     alt="Flower decoration"
-                    className="absolute -top-3 -right-3 w-32 sm:w-48 z-20 drop-shadow-2xl brightness-105"
+                    className="absolute top-0 right-0 w-32 sm:w-56 md:w-80 lg:w-[450px] z-20 drop-shadow-2xl brightness-110 pointer-events-none opacity-90"
                 />
                 <img
                     src={flowerCorner}
                     alt="Flower decoration"
-                    className="absolute -bottom-3 -left-3 w-32 sm:w-48 z-20 drop-shadow-2xl brightness-105 rotate-180"
+                    className="absolute bottom-0 left-0 w-32 sm:w-56 md:w-80 lg:w-[450px] z-20 drop-shadow-2xl brightness-110 rotate-180 pointer-events-none opacity-90"
                 />
             </div>
         </motion.div>

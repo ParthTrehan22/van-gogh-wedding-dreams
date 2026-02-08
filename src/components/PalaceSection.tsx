@@ -1,5 +1,6 @@
 import goldenPalace from "@/assets/Fort.png";
 import waterReflection from "@/assets/Water.jpeg";
+import waterReflectionMiddle from "@/assets/Water2.jpeg";
 import waterReflection2 from "@/assets/WaterExtended.jpeg";
 import ganesha from "@/assets/Ganesha.png";
 
@@ -19,6 +20,12 @@ const PalaceSection = () => {
         />
         {/* Blending Gradient to fix seam */}
         <div className="absolute w-full h-32 -mt-16 z-20 bg-gradient-to-b from-transparent via-[#40E0D0]/40 to-transparent" />
+
+        <img
+          src={waterReflectionMiddle}
+          alt="Water reflection middle"
+          className="w-full h-auto object-cover block relative z-0"
+        />
 
         <img
           src={waterReflection2}
@@ -56,9 +63,21 @@ const PalaceSection = () => {
             You to join us in the wedding celebrations of
           </p>
 
-          <h1 className="font-display text-5xl sm:text-7xl text-white text-shadow-glow pb-8 leading-tight">
-            Srishti & Parth
-          </h1>
+          <div className="font-display text-5xl sm:text-7xl text-white text-shadow-glow leading-tight flex flex-col gap-2">
+            <span>Srishti</span>
+            <span className="text-3xl sm:text-5xl opacity-80">&</span>
+            <span>Parth</span>
+          </div>
+
+          <div className="mt-8 pb-32 flex flex-col gap-2 items-center font-upright">
+            <p className="text-xl sm:text-2xl text-white font-medium text-center">
+              S/o Mrs. Rama & Mr. Dinesh Trehan
+            </p>
+            <p className="text-sm tracking-[0.3em] uppercase my-6">and</p>
+            <p className="text-xl sm:text-2xl text-white font-medium text-center">
+              GS/o Mrs. Nirmal Rani & Mr. Shyam Sunder Trehan
+            </p>
+          </div>
 
           <p className="font-elegant text-white/90 text-lg sm:text-xl mb-24 italic tracking-wider">
             On the following events
