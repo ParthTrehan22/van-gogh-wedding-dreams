@@ -1,45 +1,8 @@
 import { motion } from "framer-motion";
 import flowerCorner from "@/assets/FlowerCorner.png";
+import { getSideContent } from "@/config/sideContent";
 
-interface FamilyGroup {
-  label: string;
-  names: string[];
-}
-
-const familyGroups: FamilyGroup[] = [
-  {
-    label: "Warm Regards",
-    names: [
-      "Amit – Charu",
-      "Anil – Manisha",
-      "Arpit – Aishwarya",
-      "Akshat, Vertika, Divita, Arnav",
-    ],
-  },
-  {
-    label: "Special Invitation",
-    names: [
-      "Sapna – Ravi Ji Gupta",
-      "Ritika – Ashutosh Ji",
-      "Payal – Shashank Ji Rawat",
-    ],
-  },
-  {
-    label: "Paternal Side",
-    names: [
-      "Shri Jawahar Lal – Smt. Kamini",
-      "Smt. Sunit – Lt. Shri Hemant Ji",
-      "Nikunj – Richa",
-    ],
-  },
-  {
-    label: "Maternal Side",
-    names: [
-      "Smt. Shakuntla Ji",
-      "Santosh – Trisha",
-    ],
-  },
-];
+const { warmRegards: familyGroups } = getSideContent();
 
 const WarmRegardsSection = () => {
   return (

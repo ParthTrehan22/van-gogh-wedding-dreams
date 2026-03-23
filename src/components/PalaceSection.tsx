@@ -1,9 +1,13 @@
+import React from "react";
 import goldenPalace from "@/assets/Fort.png";
 import waterReflection from "@/assets/Water.jpeg";
 import waterReflectionMiddle from "@/assets/Water2.jpeg";
 import waterReflection2 from "@/assets/WaterExtended.jpeg";
 import ganesha from "@/assets/Ganesha.png";
 import varmalaImg from "@/assets/VarmalaGhibli.png";
+import { getSideContent } from "@/config/sideContent";
+
+const { nameFirst, nameSecond, blessings, parents } = getSideContent();
 
 const PalaceSection = () => {
   return (
@@ -61,9 +65,12 @@ const PalaceSection = () => {
 
           <div className="font-upright text-white/90 space-y-7 mb-12 text-base sm:text-lg leading-loose tracking-wide">
             <p className="mb-2">With the blessings of</p>
-            <p className="text-xl sm:text-2xl text-white font-medium">Smt. Sushila & Sh. Ram Kishore Khandelwal</p>
-            <p className="text-sm tracking-[0.3em] uppercase my-6">and</p>
-            <p className="text-xl sm:text-2xl text-white font-medium">Mrs. Ruchika & Mr. Rajesh Khandelwal</p>
+            {blessings.lines.map((line, i) => (
+              <React.Fragment key={i}>
+                {i > 0 && <p className="text-sm tracking-[0.3em] uppercase my-6">and</p>}
+                <p className="text-xl sm:text-2xl text-white font-medium">{line.name}</p>
+              </React.Fragment>
+            ))}
           </div>
 
           <h2 className="font-display text-4xl sm:text-6xl text-white mb-6 tracking-widest">
@@ -75,19 +82,20 @@ const PalaceSection = () => {
           </p>
 
           <div className="font-display text-5xl sm:text-7xl text-white text-shadow-glow leading-tight flex flex-col gap-2">
-            <span>Srishti</span>
+            <span>{nameFirst}</span>
             <span className="text-3xl sm:text-5xl opacity-80">&</span>
-            <span>Parth</span>
+            <span>{nameSecond}</span>
           </div>
 
           <div className="mt-6 pb-8 flex flex-col gap-2 items-center font-upright">
-            <p className="text-xl sm:text-2xl text-white font-medium text-center">
-              S/o Mrs. Rama & Mr. Dinesh Trehan
-            </p>
-            <p className="text-sm tracking-[0.3em] uppercase my-6">and</p>
-            <p className="text-xl sm:text-2xl text-white font-medium text-center">
-              GS/o Mrs. Nirmal Rani & Mr. Shyam Sunder Trehan
-            </p>
+            {parents.lines.map((line, i) => (
+              <React.Fragment key={i}>
+                {i > 0 && <p className="text-sm tracking-[0.3em] uppercase my-6">and</p>}
+                <p className="text-xl sm:text-2xl text-white font-medium text-center">
+                  {line.prefix} {line.name}
+                </p>
+              </React.Fragment>
+            ))}
           </div>
 
           <p className="font-elegant text-white/90 text-lg sm:text-xl mb-4 italic tracking-wider">

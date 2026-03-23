@@ -1,12 +1,15 @@
 import { motion, useScroll } from "framer-motion";
 import { useRef } from "react";
 import StarryBackground from "@/components/StarryBackground";
+import { getSideContent } from "@/config/sideContent";
 import PalaceSection from "@/components/PalaceSection";
 import EventsSection from "@/components/EventsSection";
 import SeeTheRoute from "@/components/SeeTheRoute";
 import CoupleSection from "@/components/CoupleSection";
 import WarmRegardsSection from "@/components/WarmRegardsSection";
 import { LanternLayer } from "@/components/LanternLayer";
+
+const { nameFirst, nameSecond } = getSideContent();
 
 const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -38,7 +41,7 @@ const Index = () => {
               className="flex flex-col items-center justify-center text-center"
             >
               <h1 className="font-display text-5xl text-[#FFFDD0] tracking-widest leading-none drop-shadow-lg [text-shadow:0_2px_18px_rgba(0,24,48,0.55),0_0_28px_rgba(255,253,220,0.35)]">
-                SRISHTI
+                {nameFirst.toUpperCase()}
               </h1>
 
               <p className="font-elegant text-2xl text-[#FFFDD0]/90 tracking-[0.3em] my-6 sm:my-8 uppercase [text-shadow:0_2px_14px_rgba(0,24,48,0.5)]">
@@ -46,7 +49,7 @@ const Index = () => {
               </p>
 
               <h1 className="font-display text-5xl text-[#FFFDD0] tracking-widest leading-none drop-shadow-lg [text-shadow:0_2px_18px_rgba(0,24,48,0.55),0_0_28px_rgba(255,253,220,0.35)]">
-                PARTH
+                {nameSecond.toUpperCase()}
               </h1>
             </motion.div>
 
