@@ -76,7 +76,7 @@ const Index = () => {
         </motion.div>
 
         {/* REST OF CONTENT - Background gradient to blend */}
-        <div className="relative z-10 -mt-[52vh] sm:-mt-[58vh]">
+        <div className="relative z-10 -mt-[18vh] sm:-mt-[38vh] md:-mt-[52vh] lg:-mt-[58vh]">
           <EventsSection />
           <SeeTheRoute />
           {/* Couple Section - Overlaps the sticky map section */}
