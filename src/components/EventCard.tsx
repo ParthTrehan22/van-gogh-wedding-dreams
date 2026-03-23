@@ -50,7 +50,7 @@ const getEventIcon = (title: string) => {
     if (lowerTitle.includes('haldi')) return haldiIcon;
     if (lowerTitle.includes('sangeet')) return sangeetIcon;
     if (lowerTitle.includes('varmala')) return varmalaIcon;
-    if (lowerTitle.includes('reception')) return receptionIcon;
+    if (lowerTitle.includes('reception') || lowerTitle.includes('gala') || lowerTitle.includes('dinner')) return receptionIcon;
     return null;
 };
 
