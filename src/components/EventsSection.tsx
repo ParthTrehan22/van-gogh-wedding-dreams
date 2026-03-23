@@ -3,7 +3,7 @@ import EventCard from "./EventCard";
 const events = [
   {
     name: "Haldi",
-    date: "Friday, March 13th 2026",
+    date: "Monday, April 13th 2026",
     time: "1:00 PM Onwards",
     description: "A joyful ritual to bless the couple",
     theme: "yellow",
@@ -11,7 +11,7 @@ const events = [
   },
   {
     name: "Sangeet",
-    date: "Friday, March 13th 2026",
+    date: "Monday, April 13th 2026",
     time: "7:00 PM Onwards",
     description: "A night of dance and music with family and friends",
     theme: "black",
@@ -19,15 +19,15 @@ const events = [
   },
   {
     name: "Varmala",
-    date: "Saturday, March 14th 2026",
-    time: "2:00 PM Onwards",
+    date: "Tuesday, April 14th 2026",
+    time: "5:00 PM Onwards",
     description: "The sacred union of two souls",
     theme: "pink",
     atmosphere: "varmala" as const,
   },
   {
-    name: "Reception",
-    date: "Saturday, March 14th 2026",
+    name: "Gala Dinner",
+    date: "Tuesday, April 14th 2026",
     time: "8:00 PM",
     description: "A casual dining celebration with family and friends",
     theme: "blue",
