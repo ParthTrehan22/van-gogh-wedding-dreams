@@ -12,7 +12,7 @@ export const LanternLayer = ({ scrollYProgress }: LanternLayerProps) => {
 
     return (
         <motion.div
-            className="absolute inset-0 z-20 pointer-events-none h-[150vh]" // Extend height to cover palace too
+            className="absolute inset-0 z-0 pointer-events-none h-[150vh]"
             initial={{ y: 700, opacity: 1 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 3, ease: "easeOut" }}

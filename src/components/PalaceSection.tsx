@@ -48,7 +48,7 @@ const PalaceSection = () => {
           }}
         />
         {/* Ganesha & Invitation Overlay */}
-        <div className="absolute top-[30%] left-0 w-full z-10 flex flex-col items-center justify-center text-center px-4 mix-blend-plus-lighter">
+        <div className="absolute top-[22%] left-0 w-full z-10 flex flex-col items-center justify-center text-center px-4 mix-blend-plus-lighter">
           <p className="font-elegant text-white text-lg sm:text-xl mb-4 tracking-wider">
             ॐ श्री गणेशाय नमः
           </p>
@@ -59,7 +59,7 @@ const PalaceSection = () => {
             className="w-100 sm:w-100 h-auto object-contain mb-14"
           />
 
-          <div className="font-upright text-white/90 space-y-8 mb-16 text-base sm:text-lg leading-loose tracking-wide">
+          <div className="font-upright text-white/90 space-y-7 mb-12 text-base sm:text-lg leading-loose tracking-wide">
             <p className="mb-2">With the blessings of</p>
             <p className="text-xl sm:text-2xl text-white font-medium">Smt. Sushila & Sh. Ram Kishore Khandelwal</p>
             <p className="text-sm tracking-[0.3em] uppercase my-6">and</p>
@@ -80,7 +80,7 @@ const PalaceSection = () => {
             <span>Parth</span>
           </div>
 
-          <div className="mt-8 pb-32 flex flex-col gap-2 items-center font-upright">
+          <div className="mt-6 pb-8 flex flex-col gap-2 items-center font-upright">
             <p className="text-xl sm:text-2xl text-white font-medium text-center">
               S/o Mrs. Rama & Mr. Dinesh Trehan
             </p>
@@ -90,7 +90,7 @@ const PalaceSection = () => {
             </p>
           </div>
 
-          <p className="font-elegant text-white/90 text-lg sm:text-xl mb-24 italic tracking-wider">
+          <p className="font-elegant text-white/90 text-lg sm:text-xl mb-4 italic tracking-wider">
             On the following events
           </p>
         </div>

@@ -4,8 +4,8 @@ const SeeTheRoute = () => {
     const mapUrl = "https://www.google.com/maps/search/?api=1&query=Savitri+Resorts+Pushkar";
 
     return (
-        <section className="relative w-full h-[215vh]">
-            {/* Background - Teal/Green with subtle texture - Scrolls with the section */}
+        <section className="relative z-10 -mt-px w-full h-[215vh]">
+            {/* Background — pull up 1px to avoid hairline; matches venue green */}
             <div className="absolute inset-0 bg-[#40826D]">
                 {/* Subtle patterned overlay */}
                 <div className="absolute inset-0 opacity-10"

@@ -4,6 +4,7 @@ import haldiIcon from "@/assets/Haldi-icon.png";
 import sangeetIcon from "@/assets/Sangeet-icon.png";
 import varmalaIcon from "@/assets/varmala-icon.png";
 import receptionIcon from "@/assets/reception-icon.png";
+import EventAtmosphere, { type EventAtmosphereVariant } from "@/components/EventAtmosphere";
 
 type EventTheme = 'yellow' | 'black' | 'pink' | 'blue';
 
@@ -14,6 +15,7 @@ interface EventCardProps {
     description: string;
     delay?: number;
     theme?: EventTheme;
+    atmosphere: EventAtmosphereVariant;
 }
 
 const themeStyles: Record<EventTheme, { innerBg: string; titleColor: string; textColor: string; buttonColor: string }> = {
@@ -52,9 +54,16 @@ const getEventIcon = (title: string) => {
     return null;
 };
 
-const EventCard = ({ title, date, time, description, delay = 0, theme = 'yellow' }: EventCardProps) => {
+const EventCard = ({ title, date, time, description, delay = 0, theme = 'yellow', atmosphere }: EventCardProps) => {
     const styles = themeStyles[theme];
     const icon = getEventIcon(title);
+    const isDarkCard = theme === "black" || theme === "blue";
+    const contentLift = isDarkCard
+        ? "[text-shadow:0_2px_20px_rgba(0,0,0,0.75)]"
+        : "[text-shadow:0_2px_14px_rgba(255,253,245,0.9)]";
+    const iconLift = isDarkCard
+        ? "[filter:drop-shadow(0_6px_28px_rgba(0,0,0,0.85))]"
+        : "[filter:drop-shadow(0_4px_24px_rgba(255,253,245,0.92))]";
 
     return (
         <motion.div
@@ -65,10 +74,12 @@ const EventCard = ({ title, date, time, description, delay = 0, theme = 'yellow'
             className="relative w-full min-h-screen flex flex-col"
         >
             {/* Main Colored Background - Full Screen */}
-            <div className={`relative ${styles.innerBg} w-full min-h-screen flex flex-col items-center justify-between py-24 sm:py-32 md:py-40 text-center transition-colors duration-500`}>
+            <div className={`relative overflow-hidden ${styles.innerBg} w-full min-h-screen flex flex-col items-center justify-between py-24 sm:py-32 md:py-40 text-center transition-colors duration-500`}>
+
+                <EventAtmosphere variant={atmosphere} />
 
                 {/* Inner Decorative Frame */}
-                <div className={`absolute inset-4 sm:inset-12 md:inset-16 border-[3px] ${styles.buttonColor.split(' ')[1]} opacity-40 pointer-events-none rounded-[2rem]`} />
+                <div className={`absolute inset-4 sm:inset-12 md:inset-16 border-[3px] ${styles.buttonColor.split(' ')[1]} opacity-40 pointer-events-none rounded-[2rem] z-[5]`} />
 
                 {/* Event Icon Section - Takes available space */}
                 {icon && (
@@ -76,21 +87,21 @@ const EventCard = ({ title, date, time, description, delay = 0, theme = 'yellow'
                         initial={{ scale: 0.8, opacity: 0, y: 20 }}
                         whileInView={{ scale: 1, opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
-                        className="relative z-10 flex-1 flex items-center justify-center w-full"
+                        className="relative z-30 flex-1 flex items-center justify-center w-full"
                     >
                         <img
                             src={icon}
                             alt={`${title} icon`}
-                            className="w-72 sm:w-72 md:w-96 lg:w-[500px] h-auto object-contain drop-shadow-2xl"
+                            className={`w-72 sm:w-72 md:w-96 lg:w-[500px] h-auto object-contain drop-shadow-2xl ${iconLift}`}
                         />
                     </motion.div>
                 )}
 
                 {/* Text Content Section - Takes available space and spreads out */}
-                <div className="flex-1 flex flex-col items-center justify-center w-full px-6 relative z-10 gap-2 sm:gap-4 md:gap-8">
+                <div className={`flex-1 flex flex-col items-center justify-center w-full px-6 relative z-30 gap-2 sm:gap-4 md:gap-8 ${contentLift}`}>
 
                     {/* Title */}
-                    <h3 className={`font-display text-5xl sm:text-7xl md:text-9xl ${styles.titleColor} tracking-widest uppercase drop-shadow-sm`}>
+                    <h3 className={`font-display text-5xl sm:text-7xl md:text-9xl ${styles.titleColor} tracking-widest uppercase`}>
                         {title}
                     </h3>
 
